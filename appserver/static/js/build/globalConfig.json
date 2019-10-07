@@ -1,0 +1,242 @@
+{
+    "pages": {
+        "configuration": {
+            "tabs": [
+                {
+                    "entity": [
+                        {
+                            "type": "singleSelect", 
+                            "label": "Log level", 
+                            "defaultValue": "INFO", 
+                            "field": "loglevel", 
+                            "options": {
+                                "autoCompleteFields": [
+                                    {
+                                        "value": "DEBUG", 
+                                        "label": "DEBUG"
+                                    }, 
+                                    {
+                                        "value": "INFO", 
+                                        "label": "INFO"
+                                    }, 
+                                    {
+                                        "value": "WARNING", 
+                                        "label": "WARNING"
+                                    }, 
+                                    {
+                                        "value": "ERROR", 
+                                        "label": "ERROR"
+                                    }, 
+                                    {
+                                        "value": "CRITICAL", 
+                                        "label": "CRITICAL"
+                                    }
+                                ], 
+                                "disableSearch": true
+                            }
+                        }
+                    ], 
+                    "name": "logging", 
+                    "title": "Logging"
+                }
+            ], 
+            "description": "Set up your add-on", 
+            "title": "Configuration"
+        }, 
+        "inputs": {
+            "description": "Manage your data inputs", 
+            "services": [
+                {
+                    "entity": [
+                        {
+                            "field": "name", 
+                            "help": "Enter a unique name for the data input", 
+                            "type": "text", 
+                            "label": "Name", 
+                            "validators": [
+                                {
+                                    "type": "regex", 
+                                    "errorMsg": "Input Name must start with a letter and followed by alphabetic letters, digits or underscores.", 
+                                    "pattern": "^[a-zA-Z]\\w*$"
+                                }, 
+                                {
+                                    "type": "string", 
+                                    "maxLength": 100, 
+                                    "errorMsg": "Length of input name should be between 1 and 100", 
+                                    "minLength": 1
+                                }
+                            ], 
+                            "required": true
+                        }, 
+                        {
+                            "field": "interval", 
+                            "help": "Time interval of input in seconds.", 
+                            "type": "text", 
+                            "label": "Interval", 
+                            "validators": [
+                                {
+                                    "type": "regex", 
+                                    "errorMsg": "Interval must be an integer.", 
+                                    "pattern": "^\\-[1-9]\\d*$|^\\d*$"
+                                }
+                            ], 
+                            "required": true
+                        }, 
+                        {
+                            "validators": [
+                                {
+                                    "type": "string", 
+                                    "maxLength": 80, 
+                                    "errorMsg": "Length of index name should be between 1 and 80.", 
+                                    "minLength": 1
+                                }
+                            ], 
+                            "options": {
+                                "createSearchChoice": true, 
+                                "blackList": "^_.*$", 
+                                "endpointUrl": "data/indexes"
+                            }, 
+                            "type": "singleSelect", 
+                            "label": "Index", 
+                            "defaultValue": "default", 
+                            "field": "index", 
+                            "required": true
+                        }, 
+                        {
+                            "field": "saas_domain", 
+                            "help": "", 
+                            "type": "text", 
+                            "label": "SaaS Domain", 
+                            "defaultValue": "apppulse-active.saas.microfocus.com", 
+                            "required": true, 
+                            "validators": [
+                                {
+                                    "type": "string", 
+                                    "maxLength": 8192, 
+                                    "errorMsg": "Max length of text input is 8192", 
+                                    "minLength": 0
+                                }
+                            ]
+                        }, 
+                        {
+                            "validators": [
+                                {
+                                    "type": "string", 
+                                    "maxLength": 8192, 
+                                    "errorMsg": "Max length of text input is 8192", 
+                                    "minLength": 0
+                                }
+                            ], 
+                            "field": "tenant_id", 
+                            "help": "", 
+                            "type": "text", 
+                            "label": "Tenant ID", 
+                            "required": true
+                        }, 
+                        {
+                            "validators": [
+                                {
+                                    "type": "string", 
+                                    "maxLength": 8192, 
+                                    "errorMsg": "Max length of text input is 8192", 
+                                    "minLength": 0
+                                }
+                            ], 
+                            "field": "client_id", 
+                            "help": "", 
+                            "type": "text", 
+                            "label": "Client ID", 
+                            "required": true
+                        }, 
+                        {
+                            "encrypted": true, 
+                            "field": "client_secret", 
+                            "help": "", 
+                            "type": "text", 
+                            "label": "Client Secret", 
+                            "required": true, 
+                            "validators": [
+                                {
+                                    "type": "string", 
+                                    "maxLength": 8192, 
+                                    "errorMsg": "Max length of password is 8192", 
+                                    "minLength": 0
+                                }
+                            ]
+                        }
+                    ], 
+                    "name": "apppulse_active", 
+                    "title": "AppPulse Active"
+                }
+            ], 
+            "title": "Inputs", 
+            "table": {
+                "actions": [
+                    "edit", 
+                    "enable", 
+                    "delete", 
+                    "clone"
+                ], 
+                "header": [
+                    {
+                        "label": "Name", 
+                        "field": "name"
+                    }, 
+                    {
+                        "label": "Interval", 
+                        "field": "interval"
+                    }, 
+                    {
+                        "label": "Index", 
+                        "field": "index"
+                    }, 
+                    {
+                        "label": "Status", 
+                        "field": "disabled"
+                    }
+                ], 
+                "moreInfo": [
+                    {
+                        "label": "Name", 
+                        "field": "name"
+                    }, 
+                    {
+                        "label": "Interval", 
+                        "field": "interval"
+                    }, 
+                    {
+                        "label": "Index", 
+                        "field": "index"
+                    }, 
+                    {
+                        "label": "Status", 
+                        "field": "disabled"
+                    }, 
+                    {
+                        "label": "SaaS Domain", 
+                        "field": "saas_domain"
+                    }, 
+                    {
+                        "label": "Tenant ID", 
+                        "field": "tenant_id"
+                    }, 
+                    {
+                        "label": "Client ID", 
+                        "field": "client_id"
+                    }, 
+                    {
+                        "label": "Client Secret", 
+                        "field": "client_secret"
+                    }
+                ]
+            }
+        }
+    }, 
+    "meta": {
+        "apiVersion": "3.0.0", 
+        "version": "1.0.0", 
+        "displayName": "AppPulse Active Add-On", 
+        "name": "TA-apppulse-active", 
+        "restRoot": "TA_apppulse_active"
+    }
+}
