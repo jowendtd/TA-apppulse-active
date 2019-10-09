@@ -25,10 +25,36 @@ fields_logging = [
 model_logging = RestModel(fields_logging, name='logging')
 
 
+fields_additional_parameters = [
+    field.RestField(
+        'saas_domain',
+        required=True,
+        encrypted=False,
+        default='apppulse-active.saas.hpe.com',
+        validator=validator.String(
+            max_len=8192, 
+            min_len=0, 
+        )
+    ), 
+    field.RestField(
+        'tenant_id',
+        required=True,
+        encrypted=False,
+        default='',
+        validator=validator.String(
+            max_len=8192, 
+            min_len=0, 
+        )
+    )
+]
+model_additional_parameters = RestModel(fields_additional_parameters, name='additional_parameters')
+
+
 endpoint = MultipleModel(
     'ta_apppulse_active_settings',
     models=[
-        model_logging
+        model_logging, 
+        model_additional_parameters
     ],
 )
 

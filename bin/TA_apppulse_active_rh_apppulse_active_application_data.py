@@ -29,49 +29,16 @@ fields = [
         encrypted=False,
         default='default',
         validator=validator.String(
-            min_len=1, 
             max_len=80, 
+            min_len=1, 
         )
     ), 
     field.RestField(
-        'saas_domain',
-        required=True,
-        encrypted=False,
-        default='apppulse-active.saas.microfocus.com',
-        validator=validator.String(
-            min_len=0, 
-            max_len=8192, 
-        )
-    ), 
-    field.RestField(
-        'tenant_id',
+        'tenant',
         required=True,
         encrypted=False,
         default=None,
-        validator=validator.String(
-            min_len=0, 
-            max_len=8192, 
-        )
-    ), 
-    field.RestField(
-        'client_id',
-        required=True,
-        encrypted=False,
-        default=None,
-        validator=validator.String(
-            min_len=0, 
-            max_len=8192, 
-        )
-    ), 
-    field.RestField(
-        'client_secret',
-        required=True,
-        encrypted=True,
-        default=None,
-        validator=validator.String(
-            min_len=0, 
-            max_len=8192, 
-        )
+        validator=None
     ), 
 
     field.RestField(
@@ -86,7 +53,7 @@ model = RestModel(fields, name=None)
 
 
 endpoint = DataInputModel(
-    'apppulse_active',
+    'apppulse_active_application_data',
     model,
 )
 

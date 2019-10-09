@@ -1,5 +1,5 @@
-[apppulse_active://<name>]
-saas_domain = 
-tenant_id = 
-client_id = 
-client_secret =
+[apppulse_active_application_data://<name>]
+tenant = 
+
+[apppulse_active_configuration://<name>]
+tenant =
